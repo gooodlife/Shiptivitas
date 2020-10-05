@@ -3,9 +3,6 @@ import Swimlane from './Swimlane';
 import './Board.css';
 import 'dragula/dist/dragula.css';
 import reactDragula from 'react-dragula';
-import ReactDOM from 'react-dom';
-import Card from './Card';
-
 
 
 /**
@@ -30,9 +27,8 @@ export default class Board extends React.Component {
   }
   
   async getClients() {
-    const clients = await fetch('http://localhost:3001/api/v1/clients')
+    const clients = await fetch('https://shiptivita2.herokuapp.com/api/v1/clients')
     .then(response => response.json())
-    alert(clients);
     
      this.setState ({
      clients: {
@@ -98,7 +94,7 @@ export default class Board extends React.Component {
       console.log(el, sibling)
       // console.log("moved from", el.dataset.priority, "in", source.id, "to", sibling.dataset.priority, "in", target.id)
 
-      fetch(`http://localhost:3001/api/v1/clients/${el.dataset.id}`, {
+      fetch(`https://shiptivita2.herokuapp.com/api/v1/clients${el.dataset.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
